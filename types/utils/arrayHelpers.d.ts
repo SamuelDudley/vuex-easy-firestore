@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 export declare function setFirebaseDependency(firebaseDependency: any): void;
 export declare class ArrayUnion {

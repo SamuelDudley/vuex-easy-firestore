@@ -2,7 +2,7 @@ import test from 'ava'
 import wait from './helpers/wait'
 import { store } from './helpers/index.cjs.js'
 
-import * as Firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 test('initialDoc through openDBRef & fetchAndAdd', async t => {

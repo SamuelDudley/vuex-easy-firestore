@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import { getDeepRef, getKeysFromPath } from 'vuex-easy-access';
@@ -26,7 +26,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
-var __assign = function() {
+var __assign = function () {
     __assign = Object.assign || function __assign(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
@@ -48,8 +48,8 @@ function __awaiter(thisArg, _arguments, P, generator) {
 }
 
 function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -161,7 +161,7 @@ var defaultConfig = {
  * @export
  * @returns {IState} the state object
  */
-function pluginState () {
+function pluginState() {
     return {
         _sync: {
             signedIn: false,
@@ -205,7 +205,7 @@ var errorMessages = {
  * @param {any} [error] an actual error from an async request or something
  * @returns {string} the error id
  */
-function error (errorId, error) {
+function error(errorId, error) {
     var logData = errorMessages[errorId] || errorId;
     console.error("[vuex-easy-firestore] Error! " + logData);
     if (error)
@@ -221,8 +221,8 @@ function error (errorId, error) {
  * @memberOf ListCache
  */
 function listCacheClear() {
-  this.__data__ = [];
-  this.size = 0;
+    this.__data__ = [];
+    this.size = 0;
 }
 
 /**
@@ -258,7 +258,7 @@ function listCacheClear() {
  * // => true
  */
 function eq(value, other) {
-  return value === other || (value !== value && other !== other);
+    return value === other || (value !== value && other !== other);
 }
 
 /**
@@ -270,13 +270,13 @@ function eq(value, other) {
  * @returns {number} Returns the index of the matched value, else `-1`.
  */
 function assocIndexOf(array, key) {
-  var length = array.length;
-  while (length--) {
-    if (eq(array[length][0], key)) {
-      return length;
+    var length = array.length;
+    while (length--) {
+        if (eq(array[length][0], key)) {
+            return length;
+        }
     }
-  }
-  return -1;
+    return -1;
 }
 
 /** Used for built-in method references. */
@@ -295,20 +295,20 @@ var splice = arrayProto.splice;
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
 function listCacheDelete(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
+    var data = this.__data__,
+        index = assocIndexOf(data, key);
 
-  if (index < 0) {
-    return false;
-  }
-  var lastIndex = data.length - 1;
-  if (index == lastIndex) {
-    data.pop();
-  } else {
-    splice.call(data, index, 1);
-  }
-  --this.size;
-  return true;
+    if (index < 0) {
+        return false;
+    }
+    var lastIndex = data.length - 1;
+    if (index == lastIndex) {
+        data.pop();
+    } else {
+        splice.call(data, index, 1);
+    }
+    --this.size;
+    return true;
 }
 
 /**
@@ -321,10 +321,10 @@ function listCacheDelete(key) {
  * @returns {*} Returns the entry value.
  */
 function listCacheGet(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
+    var data = this.__data__,
+        index = assocIndexOf(data, key);
 
-  return index < 0 ? undefined : data[index][1];
+    return index < 0 ? undefined : data[index][1];
 }
 
 /**
@@ -337,7 +337,7 @@ function listCacheGet(key) {
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
 function listCacheHas(key) {
-  return assocIndexOf(this.__data__, key) > -1;
+    return assocIndexOf(this.__data__, key) > -1;
 }
 
 /**
@@ -351,16 +351,16 @@ function listCacheHas(key) {
  * @returns {Object} Returns the list cache instance.
  */
 function listCacheSet(key, value) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
+    var data = this.__data__,
+        index = assocIndexOf(data, key);
 
-  if (index < 0) {
-    ++this.size;
-    data.push([key, value]);
-  } else {
-    data[index][1] = value;
-  }
-  return this;
+    if (index < 0) {
+        ++this.size;
+        data.push([key, value]);
+    } else {
+        data[index][1] = value;
+    }
+    return this;
 }
 
 /**
@@ -371,14 +371,14 @@ function listCacheSet(key, value) {
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `ListCache`.
@@ -396,8 +396,8 @@ ListCache.prototype.set = listCacheSet;
  * @memberOf Stack
  */
 function stackClear() {
-  this.__data__ = new ListCache;
-  this.size = 0;
+    this.__data__ = new ListCache;
+    this.size = 0;
 }
 
 /**
@@ -410,11 +410,11 @@ function stackClear() {
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
 function stackDelete(key) {
-  var data = this.__data__,
-      result = data['delete'](key);
+    var data = this.__data__,
+        result = data['delete'](key);
 
-  this.size = data.size;
-  return result;
+    this.size = data.size;
+    return result;
 }
 
 /**
@@ -427,7 +427,7 @@ function stackDelete(key) {
  * @returns {*} Returns the entry value.
  */
 function stackGet(key) {
-  return this.__data__.get(key);
+    return this.__data__.get(key);
 }
 
 /**
@@ -440,7 +440,7 @@ function stackGet(key) {
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
 function stackHas(key) {
-  return this.__data__.has(key);
+    return this.__data__.has(key);
 }
 
 /** Detect free variable `global` from Node.js. */
@@ -479,23 +479,23 @@ var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : undefined;
  * @returns {string} Returns the raw `toStringTag`.
  */
 function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
+    var isOwn = hasOwnProperty.call(value, symToStringTag),
+        tag = value[symToStringTag];
 
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
+    try {
+        value[symToStringTag] = undefined;
+        var unmasked = true;
+    } catch (e) { }
 
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
+    var result = nativeObjectToString.call(value);
+    if (unmasked) {
+        if (isOwn) {
+            value[symToStringTag] = tag;
+        } else {
+            delete value[symToStringTag];
+        }
     }
-  }
-  return result;
+    return result;
 }
 
 /** Used for built-in method references. */
@@ -516,7 +516,7 @@ var nativeObjectToString$1 = objectProto$1.toString;
  * @returns {string} Returns the converted string.
  */
 function objectToString(value) {
-  return nativeObjectToString$1.call(value);
+    return nativeObjectToString$1.call(value);
 }
 
 /** `Object#toString` result references. */
@@ -534,12 +534,12 @@ var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : undefined;
  * @returns {string} Returns the `toStringTag`.
  */
 function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag$1 && symToStringTag$1 in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
+    if (value == null) {
+        return value === undefined ? undefinedTag : nullTag;
+    }
+    return (symToStringTag$1 && symToStringTag$1 in Object(value))
+        ? getRawTag(value)
+        : objectToString(value);
 }
 
 /**
@@ -568,8 +568,8 @@ function baseGetTag(value) {
  * // => false
  */
 function isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
+    var type = typeof value;
+    return value != null && (type == 'object' || type == 'function');
 }
 
 /** `Object#toString` result references. */
@@ -596,22 +596,22 @@ var asyncTag = '[object AsyncFunction]',
  * // => false
  */
 function isFunction(value) {
-  if (!isObject(value)) {
-    return false;
-  }
-  // The use of `Object#toString` avoids issues with the `typeof` operator
-  // in Safari 9 which returns 'object' for typed arrays and other constructors.
-  var tag = baseGetTag(value);
-  return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
+    if (!isObject(value)) {
+        return false;
+    }
+    // The use of `Object#toString` avoids issues with the `typeof` operator
+    // in Safari 9 which returns 'object' for typed arrays and other constructors.
+    var tag = baseGetTag(value);
+    return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
 }
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
 
 /** Used to detect methods masquerading as native. */
-var maskSrcKey = (function() {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? ('Symbol(src)_1.' + uid) : '';
+var maskSrcKey = (function () {
+    var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+    return uid ? ('Symbol(src)_1.' + uid) : '';
 }());
 
 /**
@@ -622,7 +622,7 @@ var maskSrcKey = (function() {
  * @returns {boolean} Returns `true` if `func` is masked, else `false`.
  */
 function isMasked(func) {
-  return !!maskSrcKey && (maskSrcKey in func);
+    return !!maskSrcKey && (maskSrcKey in func);
 }
 
 /** Used for built-in method references. */
@@ -639,15 +639,15 @@ var funcToString = funcProto.toString;
  * @returns {string} Returns the source code.
  */
 function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString.call(func);
-    } catch (e) {}
-    try {
-      return (func + '');
-    } catch (e) {}
-  }
-  return '';
+    if (func != null) {
+        try {
+            return funcToString.call(func);
+        } catch (e) { }
+        try {
+            return (func + '');
+        } catch (e) { }
+    }
+    return '';
 }
 
 /**
@@ -671,8 +671,8 @@ var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
 
 /** Used to detect if a method is native. */
 var reIsNative = RegExp('^' +
-  funcToString$1.call(hasOwnProperty$1).replace(reRegExpChar, '\\$&')
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+    funcToString$1.call(hasOwnProperty$1).replace(reRegExpChar, '\\$&')
+        .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 );
 
 /**
@@ -684,11 +684,11 @@ var reIsNative = RegExp('^' +
  *  else `false`.
  */
 function baseIsNative(value) {
-  if (!isObject(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
+    if (!isObject(value) || isMasked(value)) {
+        return false;
+    }
+    var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
+    return pattern.test(toSource(value));
 }
 
 /**
@@ -700,7 +700,7 @@ function baseIsNative(value) {
  * @returns {*} Returns the property value.
  */
 function getValue(object, key) {
-  return object == null ? undefined : object[key];
+    return object == null ? undefined : object[key];
 }
 
 /**
@@ -712,8 +712,8 @@ function getValue(object, key) {
  * @returns {*} Returns the function if it's native, else `undefined`.
  */
 function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
+    var value = getValue(object, key);
+    return baseIsNative(value) ? value : undefined;
 }
 
 /* Built-in method references that are verified to be native. */
@@ -730,8 +730,8 @@ var nativeCreate = getNative(Object, 'create');
  * @memberOf Hash
  */
 function hashClear() {
-  this.__data__ = nativeCreate ? nativeCreate(null) : {};
-  this.size = 0;
+    this.__data__ = nativeCreate ? nativeCreate(null) : {};
+    this.size = 0;
 }
 
 /**
@@ -745,9 +745,9 @@ function hashClear() {
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
 function hashDelete(key) {
-  var result = this.has(key) && delete this.__data__[key];
-  this.size -= result ? 1 : 0;
-  return result;
+    var result = this.has(key) && delete this.__data__[key];
+    this.size -= result ? 1 : 0;
+    return result;
 }
 
 /** Used to stand-in for `undefined` hash values. */
@@ -769,12 +769,12 @@ var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
  * @returns {*} Returns the entry value.
  */
 function hashGet(key) {
-  var data = this.__data__;
-  if (nativeCreate) {
-    var result = data[key];
-    return result === HASH_UNDEFINED ? undefined : result;
-  }
-  return hasOwnProperty$2.call(data, key) ? data[key] : undefined;
+    var data = this.__data__;
+    if (nativeCreate) {
+        var result = data[key];
+        return result === HASH_UNDEFINED ? undefined : result;
+    }
+    return hasOwnProperty$2.call(data, key) ? data[key] : undefined;
 }
 
 /** Used for built-in method references. */
@@ -793,8 +793,8 @@ var hasOwnProperty$3 = objectProto$4.hasOwnProperty;
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
 function hashHas(key) {
-  var data = this.__data__;
-  return nativeCreate ? (data[key] !== undefined) : hasOwnProperty$3.call(data, key);
+    var data = this.__data__;
+    return nativeCreate ? (data[key] !== undefined) : hasOwnProperty$3.call(data, key);
 }
 
 /** Used to stand-in for `undefined` hash values. */
@@ -811,10 +811,10 @@ var HASH_UNDEFINED$1 = '__lodash_hash_undefined__';
  * @returns {Object} Returns the hash instance.
  */
 function hashSet(key, value) {
-  var data = this.__data__;
-  this.size += this.has(key) ? 0 : 1;
-  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED$1 : value;
-  return this;
+    var data = this.__data__;
+    this.size += this.has(key) ? 0 : 1;
+    data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED$1 : value;
+    return this;
 }
 
 /**
@@ -825,14 +825,14 @@ function hashSet(key, value) {
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `Hash`.
@@ -850,12 +850,12 @@ Hash.prototype.set = hashSet;
  * @memberOf MapCache
  */
 function mapCacheClear() {
-  this.size = 0;
-  this.__data__ = {
-    'hash': new Hash,
-    'map': new (Map || ListCache),
-    'string': new Hash
-  };
+    this.size = 0;
+    this.__data__ = {
+        'hash': new Hash,
+        'map': new (Map || ListCache),
+        'string': new Hash
+    };
 }
 
 /**
@@ -866,10 +866,10 @@ function mapCacheClear() {
  * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
  */
 function isKeyable(value) {
-  var type = typeof value;
-  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
-    ? (value !== '__proto__')
-    : (value === null);
+    var type = typeof value;
+    return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+        ? (value !== '__proto__')
+        : (value === null);
 }
 
 /**
@@ -881,10 +881,10 @@ function isKeyable(value) {
  * @returns {*} Returns the map data.
  */
 function getMapData(map, key) {
-  var data = map.__data__;
-  return isKeyable(key)
-    ? data[typeof key == 'string' ? 'string' : 'hash']
-    : data.map;
+    var data = map.__data__;
+    return isKeyable(key)
+        ? data[typeof key == 'string' ? 'string' : 'hash']
+        : data.map;
 }
 
 /**
@@ -897,9 +897,9 @@ function getMapData(map, key) {
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
 function mapCacheDelete(key) {
-  var result = getMapData(this, key)['delete'](key);
-  this.size -= result ? 1 : 0;
-  return result;
+    var result = getMapData(this, key)['delete'](key);
+    this.size -= result ? 1 : 0;
+    return result;
 }
 
 /**
@@ -912,7 +912,7 @@ function mapCacheDelete(key) {
  * @returns {*} Returns the entry value.
  */
 function mapCacheGet(key) {
-  return getMapData(this, key).get(key);
+    return getMapData(this, key).get(key);
 }
 
 /**
@@ -925,7 +925,7 @@ function mapCacheGet(key) {
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
 function mapCacheHas(key) {
-  return getMapData(this, key).has(key);
+    return getMapData(this, key).has(key);
 }
 
 /**
@@ -939,12 +939,12 @@ function mapCacheHas(key) {
  * @returns {Object} Returns the map cache instance.
  */
 function mapCacheSet(key, value) {
-  var data = getMapData(this, key),
-      size = data.size;
+    var data = getMapData(this, key),
+        size = data.size;
 
-  data.set(key, value);
-  this.size += data.size == size ? 0 : 1;
-  return this;
+    data.set(key, value);
+    this.size += data.size == size ? 0 : 1;
+    return this;
 }
 
 /**
@@ -955,14 +955,14 @@ function mapCacheSet(key, value) {
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
 
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
 }
 
 // Add methods to `MapCache`.
@@ -986,19 +986,19 @@ var LARGE_ARRAY_SIZE = 200;
  * @returns {Object} Returns the stack cache instance.
  */
 function stackSet(key, value) {
-  var data = this.__data__;
-  if (data instanceof ListCache) {
-    var pairs = data.__data__;
-    if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
-      pairs.push([key, value]);
-      this.size = ++data.size;
-      return this;
+    var data = this.__data__;
+    if (data instanceof ListCache) {
+        var pairs = data.__data__;
+        if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+            pairs.push([key, value]);
+            this.size = ++data.size;
+            return this;
+        }
+        data = this.__data__ = new MapCache(pairs);
     }
-    data = this.__data__ = new MapCache(pairs);
-  }
-  data.set(key, value);
-  this.size = data.size;
-  return this;
+    data.set(key, value);
+    this.size = data.size;
+    return this;
 }
 
 /**
@@ -1009,8 +1009,8 @@ function stackSet(key, value) {
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Stack(entries) {
-  var data = this.__data__ = new ListCache(entries);
-  this.size = data.size;
+    var data = this.__data__ = new ListCache(entries);
+    this.size = data.size;
 }
 
 // Add methods to `Stack`.
@@ -1034,8 +1034,8 @@ var HASH_UNDEFINED$2 = '__lodash_hash_undefined__';
  * @returns {Object} Returns the cache instance.
  */
 function setCacheAdd(value) {
-  this.__data__.set(value, HASH_UNDEFINED$2);
-  return this;
+    this.__data__.set(value, HASH_UNDEFINED$2);
+    return this;
 }
 
 /**
@@ -1048,7 +1048,7 @@ function setCacheAdd(value) {
  * @returns {number} Returns `true` if `value` is found, else `false`.
  */
 function setCacheHas(value) {
-  return this.__data__.has(value);
+    return this.__data__.has(value);
 }
 
 /**
@@ -1060,13 +1060,13 @@ function setCacheHas(value) {
  * @param {Array} [values] The values to cache.
  */
 function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
+    var index = -1,
+        length = values == null ? 0 : values.length;
 
-  this.__data__ = new MapCache;
-  while (++index < length) {
-    this.add(values[index]);
-  }
+    this.__data__ = new MapCache;
+    while (++index < length) {
+        this.add(values[index]);
+    }
 }
 
 // Add methods to `SetCache`.
@@ -1084,15 +1084,15 @@ SetCache.prototype.has = setCacheHas;
  *  else `false`.
  */
 function arraySome(array, predicate) {
-  var index = -1,
-      length = array == null ? 0 : array.length;
+    var index = -1,
+        length = array == null ? 0 : array.length;
 
-  while (++index < length) {
-    if (predicate(array[index], index, array)) {
-      return true;
+    while (++index < length) {
+        if (predicate(array[index], index, array)) {
+            return true;
+        }
     }
-  }
-  return false;
+    return false;
 }
 
 /**
@@ -1104,7 +1104,7 @@ function arraySome(array, predicate) {
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
 function cacheHas(cache, key) {
-  return cache.has(key);
+    return cache.has(key);
 }
 
 /** Used to compose bitmasks for value comparisons. */
@@ -1125,64 +1125,64 @@ var COMPARE_PARTIAL_FLAG = 1,
  * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
  */
 function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
-      arrLength = array.length,
-      othLength = other.length;
+    var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+        arrLength = array.length,
+        othLength = other.length;
 
-  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
-    return false;
-  }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(array);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
-  }
-  var index = -1,
-      result = true,
-      seen = (bitmask & COMPARE_UNORDERED_FLAG) ? new SetCache : undefined;
-
-  stack.set(array, other);
-  stack.set(other, array);
-
-  // Ignore non-index properties.
-  while (++index < arrLength) {
-    var arrValue = array[index],
-        othValue = other[index];
-
-    if (customizer) {
-      var compared = isPartial
-        ? customizer(othValue, arrValue, index, other, array, stack)
-        : customizer(arrValue, othValue, index, array, other, stack);
+    if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
+        return false;
     }
-    if (compared !== undefined) {
-      if (compared) {
-        continue;
-      }
-      result = false;
-      break;
+    // Assume cyclic values are equal.
+    var stacked = stack.get(array);
+    if (stacked && stack.get(other)) {
+        return stacked == other;
     }
-    // Recursively compare arrays (susceptible to call stack limits).
-    if (seen) {
-      if (!arraySome(other, function(othValue, othIndex) {
-            if (!cacheHas(seen, othIndex) &&
-                (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
-              return seen.push(othIndex);
+    var index = -1,
+        result = true,
+        seen = (bitmask & COMPARE_UNORDERED_FLAG) ? new SetCache : undefined;
+
+    stack.set(array, other);
+    stack.set(other, array);
+
+    // Ignore non-index properties.
+    while (++index < arrLength) {
+        var arrValue = array[index],
+            othValue = other[index];
+
+        if (customizer) {
+            var compared = isPartial
+                ? customizer(othValue, arrValue, index, other, array, stack)
+                : customizer(arrValue, othValue, index, array, other, stack);
+        }
+        if (compared !== undefined) {
+            if (compared) {
+                continue;
             }
-          })) {
-        result = false;
-        break;
-      }
-    } else if (!(
-          arrValue === othValue ||
+            result = false;
+            break;
+        }
+        // Recursively compare arrays (susceptible to call stack limits).
+        if (seen) {
+            if (!arraySome(other, function (othValue, othIndex) {
+                if (!cacheHas(seen, othIndex) &&
+                    (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
+                    return seen.push(othIndex);
+                }
+            })) {
+                result = false;
+                break;
+            }
+        } else if (!(
+            arrValue === othValue ||
             equalFunc(arrValue, othValue, bitmask, customizer, stack)
         )) {
-      result = false;
-      break;
+            result = false;
+            break;
+        }
     }
-  }
-  stack['delete'](array);
-  stack['delete'](other);
-  return result;
+    stack['delete'](array);
+    stack['delete'](other);
+    return result;
 }
 
 /** Built-in value references. */
@@ -1196,13 +1196,13 @@ var Uint8Array = root.Uint8Array;
  * @returns {Array} Returns the key-value pairs.
  */
 function mapToArray(map) {
-  var index = -1,
-      result = Array(map.size);
+    var index = -1,
+        result = Array(map.size);
 
-  map.forEach(function(value, key) {
-    result[++index] = [key, value];
-  });
-  return result;
+    map.forEach(function (value, key) {
+        result[++index] = [key, value];
+    });
+    return result;
 }
 
 /**
@@ -1213,13 +1213,13 @@ function mapToArray(map) {
  * @returns {Array} Returns the values.
  */
 function setToArray(set) {
-  var index = -1,
-      result = Array(set.size);
+    var index = -1,
+        result = Array(set.size);
 
-  set.forEach(function(value) {
-    result[++index] = value;
-  });
-  return result;
+    set.forEach(function (value) {
+        result[++index] = value;
+    });
+    return result;
 }
 
 /** Used to compose bitmasks for value comparisons. */
@@ -1262,68 +1262,68 @@ var symbolProto = Symbol$1 ? Symbol$1.prototype : undefined,
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
 function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
-  switch (tag) {
-    case dataViewTag:
-      if ((object.byteLength != other.byteLength) ||
-          (object.byteOffset != other.byteOffset)) {
-        return false;
-      }
-      object = object.buffer;
-      other = other.buffer;
+    switch (tag) {
+        case dataViewTag:
+            if ((object.byteLength != other.byteLength) ||
+                (object.byteOffset != other.byteOffset)) {
+                return false;
+            }
+            object = object.buffer;
+            other = other.buffer;
 
-    case arrayBufferTag:
-      if ((object.byteLength != other.byteLength) ||
-          !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
-        return false;
-      }
-      return true;
+        case arrayBufferTag:
+            if ((object.byteLength != other.byteLength) ||
+                !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
+                return false;
+            }
+            return true;
 
-    case boolTag:
-    case dateTag:
-    case numberTag:
-      // Coerce booleans to `1` or `0` and dates to milliseconds.
-      // Invalid dates are coerced to `NaN`.
-      return eq(+object, +other);
+        case boolTag:
+        case dateTag:
+        case numberTag:
+            // Coerce booleans to `1` or `0` and dates to milliseconds.
+            // Invalid dates are coerced to `NaN`.
+            return eq(+object, +other);
 
-    case errorTag:
-      return object.name == other.name && object.message == other.message;
+        case errorTag:
+            return object.name == other.name && object.message == other.message;
 
-    case regexpTag:
-    case stringTag:
-      // Coerce regexes to strings and treat strings, primitives and objects,
-      // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
-      // for more details.
-      return object == (other + '');
+        case regexpTag:
+        case stringTag:
+            // Coerce regexes to strings and treat strings, primitives and objects,
+            // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
+            // for more details.
+            return object == (other + '');
 
-    case mapTag:
-      var convert = mapToArray;
+        case mapTag:
+            var convert = mapToArray;
 
-    case setTag:
-      var isPartial = bitmask & COMPARE_PARTIAL_FLAG$1;
-      convert || (convert = setToArray);
+        case setTag:
+            var isPartial = bitmask & COMPARE_PARTIAL_FLAG$1;
+            convert || (convert = setToArray);
 
-      if (object.size != other.size && !isPartial) {
-        return false;
-      }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(object);
-      if (stacked) {
-        return stacked == other;
-      }
-      bitmask |= COMPARE_UNORDERED_FLAG$1;
+            if (object.size != other.size && !isPartial) {
+                return false;
+            }
+            // Assume cyclic values are equal.
+            var stacked = stack.get(object);
+            if (stacked) {
+                return stacked == other;
+            }
+            bitmask |= COMPARE_UNORDERED_FLAG$1;
 
-      // Recursively compare objects (susceptible to call stack limits).
-      stack.set(object, other);
-      var result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
-      stack['delete'](object);
-      return result;
+            // Recursively compare objects (susceptible to call stack limits).
+            stack.set(object, other);
+            var result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
+            stack['delete'](object);
+            return result;
 
-    case symbolTag:
-      if (symbolValueOf) {
-        return symbolValueOf.call(object) == symbolValueOf.call(other);
-      }
-  }
-  return false;
+        case symbolTag:
+            if (symbolValueOf) {
+                return symbolValueOf.call(object) == symbolValueOf.call(other);
+            }
+    }
+    return false;
 }
 
 /**
@@ -1335,14 +1335,14 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
  * @returns {Array} Returns `array`.
  */
 function arrayPush(array, values) {
-  var index = -1,
-      length = values.length,
-      offset = array.length;
+    var index = -1,
+        length = values.length,
+        offset = array.length;
 
-  while (++index < length) {
-    array[offset + index] = values[index];
-  }
-  return array;
+    while (++index < length) {
+        array[offset + index] = values[index];
+    }
+    return array;
 }
 
 /**
@@ -1382,8 +1382,8 @@ var isArray = Array.isArray;
  * @returns {Array} Returns the array of property names and symbols.
  */
 function baseGetAllKeys(object, keysFunc, symbolsFunc) {
-  var result = keysFunc(object);
-  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
+    var result = keysFunc(object);
+    return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
 }
 
 /**
@@ -1396,18 +1396,18 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
  * @returns {Array} Returns the new filtered array.
  */
 function arrayFilter(array, predicate) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      resIndex = 0,
-      result = [];
+    var index = -1,
+        length = array == null ? 0 : array.length,
+        resIndex = 0,
+        result = [];
 
-  while (++index < length) {
-    var value = array[index];
-    if (predicate(value, index, array)) {
-      result[resIndex++] = value;
+    while (++index < length) {
+        var value = array[index];
+        if (predicate(value, index, array)) {
+            result[resIndex++] = value;
+        }
     }
-  }
-  return result;
+    return result;
 }
 
 /**
@@ -1429,7 +1429,7 @@ function arrayFilter(array, predicate) {
  * // => false
  */
 function stubArray() {
-  return [];
+    return [];
 }
 
 /** Used for built-in method references. */
@@ -1448,14 +1448,14 @@ var nativeGetSymbols = Object.getOwnPropertySymbols;
  * @param {Object} object The object to query.
  * @returns {Array} Returns the array of symbols.
  */
-var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
-  if (object == null) {
-    return [];
-  }
-  object = Object(object);
-  return arrayFilter(nativeGetSymbols(object), function(symbol) {
-    return propertyIsEnumerable.call(object, symbol);
-  });
+var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
+    if (object == null) {
+        return [];
+    }
+    object = Object(object);
+    return arrayFilter(nativeGetSymbols(object), function (symbol) {
+        return propertyIsEnumerable.call(object, symbol);
+    });
 };
 
 /**
@@ -1468,13 +1468,13 @@ var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
  * @returns {Array} Returns the array of results.
  */
 function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
+    var index = -1,
+        result = Array(n);
 
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
+    while (++index < n) {
+        result[index] = iteratee(index);
+    }
+    return result;
 }
 
 /**
@@ -1502,7 +1502,7 @@ function baseTimes(n, iteratee) {
  * // => false
  */
 function isObjectLike(value) {
-  return value != null && typeof value == 'object';
+    return value != null && typeof value == 'object';
 }
 
 /** `Object#toString` result references. */
@@ -1516,7 +1516,7 @@ var argsTag = '[object Arguments]';
  * @returns {boolean} Returns `true` if `value` is an `arguments` object,
  */
 function baseIsArguments(value) {
-  return isObjectLike(value) && baseGetTag(value) == argsTag;
+    return isObjectLike(value) && baseGetTag(value) == argsTag;
 }
 
 /** Used for built-in method references. */
@@ -1546,9 +1546,9 @@ var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
  * _.isArguments([1, 2, 3]);
  * // => false
  */
-var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
-  return isObjectLike(value) && hasOwnProperty$4.call(value, 'callee') &&
-    !propertyIsEnumerable$1.call(value, 'callee');
+var isArguments = baseIsArguments(function () { return arguments; }()) ? baseIsArguments : function (value) {
+    return isObjectLike(value) && hasOwnProperty$4.call(value, 'callee') &&
+        !propertyIsEnumerable$1.call(value, 'callee');
 };
 
 /**
@@ -1565,7 +1565,7 @@ var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsAr
  * // => [false, false]
  */
 function stubFalse() {
-  return false;
+    return false;
 }
 
 /** Detect free variable `exports`. */
@@ -1617,12 +1617,12 @@ var reIsUint = /^(?:0|[1-9]\d*)$/;
  * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
  */
 function isIndex(value, length) {
-  var type = typeof value;
-  length = length == null ? MAX_SAFE_INTEGER : length;
+    var type = typeof value;
+    length = length == null ? MAX_SAFE_INTEGER : length;
 
-  return !!length &&
-    (type == 'number' ||
-      (type != 'symbol' && reIsUint.test(value))) &&
+    return !!length &&
+        (type == 'number' ||
+            (type != 'symbol' && reIsUint.test(value))) &&
         (value > -1 && value % 1 == 0 && value < length);
 }
 
@@ -1656,8 +1656,8 @@ var MAX_SAFE_INTEGER$1 = 9007199254740991;
  * // => false
  */
 function isLength(value) {
-  return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$1;
+    return typeof value == 'number' &&
+        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$1;
 }
 
 /** `Object#toString` result references. */
@@ -1690,18 +1690,18 @@ var arrayBufferTag$1 = '[object ArrayBuffer]',
 /** Used to identify `toStringTag` values of typed arrays. */
 var typedArrayTags = {};
 typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
-typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
-typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
-typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
-typedArrayTags[uint32Tag] = true;
+    typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
+    typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
+    typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
+    typedArrayTags[uint32Tag] = true;
 typedArrayTags[argsTag$1] = typedArrayTags[arrayTag] =
-typedArrayTags[arrayBufferTag$1] = typedArrayTags[boolTag$1] =
-typedArrayTags[dataViewTag$1] = typedArrayTags[dateTag$1] =
-typedArrayTags[errorTag$1] = typedArrayTags[funcTag$1] =
-typedArrayTags[mapTag$1] = typedArrayTags[numberTag$1] =
-typedArrayTags[objectTag] = typedArrayTags[regexpTag$1] =
-typedArrayTags[setTag$1] = typedArrayTags[stringTag$1] =
-typedArrayTags[weakMapTag] = false;
+    typedArrayTags[arrayBufferTag$1] = typedArrayTags[boolTag$1] =
+    typedArrayTags[dataViewTag$1] = typedArrayTags[dateTag$1] =
+    typedArrayTags[errorTag$1] = typedArrayTags[funcTag$1] =
+    typedArrayTags[mapTag$1] = typedArrayTags[numberTag$1] =
+    typedArrayTags[objectTag] = typedArrayTags[regexpTag$1] =
+    typedArrayTags[setTag$1] = typedArrayTags[stringTag$1] =
+    typedArrayTags[weakMapTag] = false;
 
 /**
  * The base implementation of `_.isTypedArray` without Node.js optimizations.
@@ -1711,8 +1711,8 @@ typedArrayTags[weakMapTag] = false;
  * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
  */
 function baseIsTypedArray(value) {
-  return isObjectLike(value) &&
-    isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
+    return isObjectLike(value) &&
+        isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
 }
 
 /**
@@ -1723,9 +1723,9 @@ function baseIsTypedArray(value) {
  * @returns {Function} Returns the new capped function.
  */
 function baseUnary(func) {
-  return function(value) {
-    return func(value);
-  };
+    return function (value) {
+        return func(value);
+    };
 }
 
 /** Detect free variable `exports`. */
@@ -1741,18 +1741,18 @@ var moduleExports$1 = freeModule$1 && freeModule$1.exports === freeExports$1;
 var freeProcess = moduleExports$1 && freeGlobal.process;
 
 /** Used to access faster Node.js helpers. */
-var nodeUtil = (function() {
-  try {
-    // Use `util.types` for Node.js 10+.
-    var types = freeModule$1 && freeModule$1.require && freeModule$1.require('util').types;
+var nodeUtil = (function () {
+    try {
+        // Use `util.types` for Node.js 10+.
+        var types = freeModule$1 && freeModule$1.require && freeModule$1.require('util').types;
 
-    if (types) {
-      return types;
-    }
+        if (types) {
+            return types;
+        }
 
-    // Legacy `process.binding('util')` for Node.js < 10.
-    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-  } catch (e) {}
+        // Legacy `process.binding('util')` for Node.js < 10.
+        return freeProcess && freeProcess.binding && freeProcess.binding('util');
+    } catch (e) { }
 }());
 
 /* Node.js helper references. */
@@ -1792,30 +1792,30 @@ var hasOwnProperty$5 = objectProto$7.hasOwnProperty;
  * @returns {Array} Returns the array of property names.
  */
 function arrayLikeKeys(value, inherited) {
-  var isArr = isArray(value),
-      isArg = !isArr && isArguments(value),
-      isBuff = !isArr && !isArg && isBuffer(value),
-      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
-      skipIndexes = isArr || isArg || isBuff || isType,
-      result = skipIndexes ? baseTimes(value.length, String) : [],
-      length = result.length;
+    var isArr = isArray(value),
+        isArg = !isArr && isArguments(value),
+        isBuff = !isArr && !isArg && isBuffer(value),
+        isType = !isArr && !isArg && !isBuff && isTypedArray(value),
+        skipIndexes = isArr || isArg || isBuff || isType,
+        result = skipIndexes ? baseTimes(value.length, String) : [],
+        length = result.length;
 
-  for (var key in value) {
-    if ((inherited || hasOwnProperty$5.call(value, key)) &&
-        !(skipIndexes && (
-           // Safari 9 has enumerable `arguments.length` in strict mode.
-           key == 'length' ||
-           // Node.js 0.10 has enumerable non-index properties on buffers.
-           (isBuff && (key == 'offset' || key == 'parent')) ||
-           // PhantomJS 2 has enumerable non-index properties on typed arrays.
-           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
-           // Skip index properties.
-           isIndex(key, length)
-        ))) {
-      result.push(key);
+    for (var key in value) {
+        if ((inherited || hasOwnProperty$5.call(value, key)) &&
+            !(skipIndexes && (
+                // Safari 9 has enumerable `arguments.length` in strict mode.
+                key == 'length' ||
+                // Node.js 0.10 has enumerable non-index properties on buffers.
+                (isBuff && (key == 'offset' || key == 'parent')) ||
+                // PhantomJS 2 has enumerable non-index properties on typed arrays.
+                (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
+                // Skip index properties.
+                isIndex(key, length)
+            ))) {
+            result.push(key);
+        }
     }
-  }
-  return result;
+    return result;
 }
 
 /** Used for built-in method references. */
@@ -1829,10 +1829,10 @@ var objectProto$8 = Object.prototype;
  * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
  */
 function isPrototype(value) {
-  var Ctor = value && value.constructor,
-      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$8;
+    var Ctor = value && value.constructor,
+        proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$8;
 
-  return value === proto;
+    return value === proto;
 }
 
 /**
@@ -1844,9 +1844,9 @@ function isPrototype(value) {
  * @returns {Function} Returns the new function.
  */
 function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
+    return function (arg) {
+        return func(transform(arg));
+    };
 }
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -1866,16 +1866,16 @@ var hasOwnProperty$6 = objectProto$9.hasOwnProperty;
  * @returns {Array} Returns the array of property names.
  */
 function baseKeys(object) {
-  if (!isPrototype(object)) {
-    return nativeKeys(object);
-  }
-  var result = [];
-  for (var key in Object(object)) {
-    if (hasOwnProperty$6.call(object, key) && key != 'constructor') {
-      result.push(key);
+    if (!isPrototype(object)) {
+        return nativeKeys(object);
     }
-  }
-  return result;
+    var result = [];
+    for (var key in Object(object)) {
+        if (hasOwnProperty$6.call(object, key) && key != 'constructor') {
+            result.push(key);
+        }
+    }
+    return result;
 }
 
 /**
@@ -1904,7 +1904,7 @@ function baseKeys(object) {
  * // => false
  */
 function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction(value);
+    return value != null && isLength(value.length) && !isFunction(value);
 }
 
 /**
@@ -1936,7 +1936,7 @@ function isArrayLike(value) {
  * // => ['0', '1']
  */
 function keys(object) {
-  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+    return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
 }
 
 /**
@@ -1947,7 +1947,7 @@ function keys(object) {
  * @returns {Array} Returns the array of property names and symbols.
  */
 function getAllKeys(object) {
-  return baseGetAllKeys(object, keys, getSymbols);
+    return baseGetAllKeys(object, keys, getSymbols);
 }
 
 /** Used to compose bitmasks for value comparisons. */
@@ -1973,67 +1973,67 @@ var hasOwnProperty$7 = objectProto$a.hasOwnProperty;
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
 function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG$2,
-      objProps = getAllKeys(object),
-      objLength = objProps.length,
-      othProps = getAllKeys(other),
-      othLength = othProps.length;
+    var isPartial = bitmask & COMPARE_PARTIAL_FLAG$2,
+        objProps = getAllKeys(object),
+        objLength = objProps.length,
+        othProps = getAllKeys(other),
+        othLength = othProps.length;
 
-  if (objLength != othLength && !isPartial) {
-    return false;
-  }
-  var index = objLength;
-  while (index--) {
-    var key = objProps[index];
-    if (!(isPartial ? key in other : hasOwnProperty$7.call(other, key))) {
-      return false;
+    if (objLength != othLength && !isPartial) {
+        return false;
     }
-  }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(object);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
-  }
-  var result = true;
-  stack.set(object, other);
-  stack.set(other, object);
-
-  var skipCtor = isPartial;
-  while (++index < objLength) {
-    key = objProps[index];
-    var objValue = object[key],
-        othValue = other[key];
-
-    if (customizer) {
-      var compared = isPartial
-        ? customizer(othValue, objValue, key, other, object, stack)
-        : customizer(objValue, othValue, key, object, other, stack);
+    var index = objLength;
+    while (index--) {
+        var key = objProps[index];
+        if (!(isPartial ? key in other : hasOwnProperty$7.call(other, key))) {
+            return false;
+        }
     }
-    // Recursively compare objects (susceptible to call stack limits).
-    if (!(compared === undefined
-          ? (objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack))
-          : compared
+    // Assume cyclic values are equal.
+    var stacked = stack.get(object);
+    if (stacked && stack.get(other)) {
+        return stacked == other;
+    }
+    var result = true;
+    stack.set(object, other);
+    stack.set(other, object);
+
+    var skipCtor = isPartial;
+    while (++index < objLength) {
+        key = objProps[index];
+        var objValue = object[key],
+            othValue = other[key];
+
+        if (customizer) {
+            var compared = isPartial
+                ? customizer(othValue, objValue, key, other, object, stack)
+                : customizer(objValue, othValue, key, object, other, stack);
+        }
+        // Recursively compare objects (susceptible to call stack limits).
+        if (!(compared === undefined
+            ? (objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack))
+            : compared
         )) {
-      result = false;
-      break;
+            result = false;
+            break;
+        }
+        skipCtor || (skipCtor = key == 'constructor');
     }
-    skipCtor || (skipCtor = key == 'constructor');
-  }
-  if (result && !skipCtor) {
-    var objCtor = object.constructor,
-        othCtor = other.constructor;
+    if (result && !skipCtor) {
+        var objCtor = object.constructor,
+            othCtor = other.constructor;
 
-    // Non `Object` object instances with different constructors are not equal.
-    if (objCtor != othCtor &&
-        ('constructor' in object && 'constructor' in other) &&
-        !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
-          typeof othCtor == 'function' && othCtor instanceof othCtor)) {
-      result = false;
+        // Non `Object` object instances with different constructors are not equal.
+        if (objCtor != othCtor &&
+            ('constructor' in object && 'constructor' in other) &&
+            !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
+                typeof othCtor == 'function' && othCtor instanceof othCtor)) {
+            result = false;
+        }
     }
-  }
-  stack['delete'](object);
-  stack['delete'](other);
-  return result;
+    stack['delete'](object);
+    stack['delete'](other);
+    return result;
 }
 
 /* Built-in method references that are verified to be native. */
@@ -2079,22 +2079,22 @@ if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag$2) ||
     (Promise$1 && getTag(Promise$1.resolve()) != promiseTag) ||
     (Set && getTag(new Set) != setTag$2) ||
     (WeakMap && getTag(new WeakMap) != weakMapTag$1)) {
-  getTag = function(value) {
-    var result = baseGetTag(value),
-        Ctor = result == objectTag$1 ? value.constructor : undefined,
-        ctorString = Ctor ? toSource(Ctor) : '';
+    getTag = function (value) {
+        var result = baseGetTag(value),
+            Ctor = result == objectTag$1 ? value.constructor : undefined,
+            ctorString = Ctor ? toSource(Ctor) : '';
 
-    if (ctorString) {
-      switch (ctorString) {
-        case dataViewCtorString: return dataViewTag$2;
-        case mapCtorString: return mapTag$2;
-        case promiseCtorString: return promiseTag;
-        case setCtorString: return setTag$2;
-        case weakMapCtorString: return weakMapTag$1;
-      }
-    }
-    return result;
-  };
+        if (ctorString) {
+            switch (ctorString) {
+                case dataViewCtorString: return dataViewTag$2;
+                case mapCtorString: return mapTag$2;
+                case promiseCtorString: return promiseTag;
+                case setCtorString: return setTag$2;
+                case weakMapCtorString: return weakMapTag$1;
+            }
+        }
+        return result;
+    };
 }
 
 var getTag$1 = getTag;
@@ -2128,48 +2128,48 @@ var hasOwnProperty$8 = objectProto$b.hasOwnProperty;
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
 function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
-  var objIsArr = isArray(object),
-      othIsArr = isArray(other),
-      objTag = objIsArr ? arrayTag$1 : getTag$1(object),
-      othTag = othIsArr ? arrayTag$1 : getTag$1(other);
+    var objIsArr = isArray(object),
+        othIsArr = isArray(other),
+        objTag = objIsArr ? arrayTag$1 : getTag$1(object),
+        othTag = othIsArr ? arrayTag$1 : getTag$1(other);
 
-  objTag = objTag == argsTag$2 ? objectTag$2 : objTag;
-  othTag = othTag == argsTag$2 ? objectTag$2 : othTag;
+    objTag = objTag == argsTag$2 ? objectTag$2 : objTag;
+    othTag = othTag == argsTag$2 ? objectTag$2 : othTag;
 
-  var objIsObj = objTag == objectTag$2,
-      othIsObj = othTag == objectTag$2,
-      isSameTag = objTag == othTag;
+    var objIsObj = objTag == objectTag$2,
+        othIsObj = othTag == objectTag$2,
+        isSameTag = objTag == othTag;
 
-  if (isSameTag && isBuffer(object)) {
-    if (!isBuffer(other)) {
-      return false;
+    if (isSameTag && isBuffer(object)) {
+        if (!isBuffer(other)) {
+            return false;
+        }
+        objIsArr = true;
+        objIsObj = false;
     }
-    objIsArr = true;
-    objIsObj = false;
-  }
-  if (isSameTag && !objIsObj) {
+    if (isSameTag && !objIsObj) {
+        stack || (stack = new Stack);
+        return (objIsArr || isTypedArray(object))
+            ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)
+            : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
+    }
+    if (!(bitmask & COMPARE_PARTIAL_FLAG$3)) {
+        var objIsWrapped = objIsObj && hasOwnProperty$8.call(object, '__wrapped__'),
+            othIsWrapped = othIsObj && hasOwnProperty$8.call(other, '__wrapped__');
+
+        if (objIsWrapped || othIsWrapped) {
+            var objUnwrapped = objIsWrapped ? object.value() : object,
+                othUnwrapped = othIsWrapped ? other.value() : other;
+
+            stack || (stack = new Stack);
+            return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
+        }
+    }
+    if (!isSameTag) {
+        return false;
+    }
     stack || (stack = new Stack);
-    return (objIsArr || isTypedArray(object))
-      ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)
-      : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
-  }
-  if (!(bitmask & COMPARE_PARTIAL_FLAG$3)) {
-    var objIsWrapped = objIsObj && hasOwnProperty$8.call(object, '__wrapped__'),
-        othIsWrapped = othIsObj && hasOwnProperty$8.call(other, '__wrapped__');
-
-    if (objIsWrapped || othIsWrapped) {
-      var objUnwrapped = objIsWrapped ? object.value() : object,
-          othUnwrapped = othIsWrapped ? other.value() : other;
-
-      stack || (stack = new Stack);
-      return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
-    }
-  }
-  if (!isSameTag) {
-    return false;
-  }
-  stack || (stack = new Stack);
-  return equalObjects(object, other, bitmask, customizer, equalFunc, stack);
+    return equalObjects(object, other, bitmask, customizer, equalFunc, stack);
 }
 
 /**
@@ -2187,13 +2187,13 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
  * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
  */
 function baseIsEqual(value, other, bitmask, customizer, stack) {
-  if (value === other) {
-    return true;
-  }
-  if (value == null || other == null || (!isObjectLike(value) && !isObjectLike(other))) {
-    return value !== value && other !== other;
-  }
-  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
+    if (value === other) {
+        return true;
+    }
+    if (value == null || other == null || (!isObjectLike(value) && !isObjectLike(other))) {
+        return value !== value && other !== other;
+    }
+    return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
 }
 
 /**
@@ -2225,7 +2225,7 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
  * // => false
  */
 function isEqual(value, other) {
-  return baseIsEqual(value, other);
+    return baseIsEqual(value, other);
 }
 
 var Firebase = firebase;
@@ -2376,7 +2376,7 @@ function getSetParams(target, path, value) {
  * @param {object} userState
  * @returns {AnyObject} the mutations object
  */
-function pluginMutations (userState) {
+function pluginMutations(userState) {
     var initialUserState = copy(userState);
     return {
         SET_PATHVARS: function (state, pathVars) {
@@ -2520,7 +2520,7 @@ function convertTimestamps(originVal, targetVal) {
  * @param {object} defaultValues
  * @returns {AnyObject} the new object
  */
-function setDefaultValues (obj, defaultValues) {
+function setDefaultValues(obj, defaultValues) {
     if (!isPlainObject(defaultValues))
         console.error('[vuex-easy-firestore] Trying to merge target:', obj, 'onto a non-object (defaultValues):', defaultValues);
     if (!isPlainObject(obj))
@@ -2544,7 +2544,7 @@ function setDefaultValues (obj, defaultValues) {
  * @author Adam Dorling
  * @contact https://codepen.io/naito
  */
-function startDebounce (ms) {
+function startDebounce(ms) {
     var startTime = Date.now();
     var done = new Promise(function (resolve, reject) {
         var interval = setInterval(function (_) {
@@ -2590,10 +2590,10 @@ function grabUntilApiLimit(syncStackProp, count, maxCount, state) {
         if (targetIsObject) {
             targetsLeft = Object.values(targetsLeft)
                 .reduce(function (carry, update) {
-                var id = update.id;
-                carry[id] = update;
-                return carry;
-            }, {});
+                    var id = update.id;
+                    carry[id] = update;
+                    return carry;
+                }, {});
         }
         state._sync.syncStack[syncStackProp] = targetsLeft;
         // Define the items we'll add below
@@ -2632,19 +2632,19 @@ function makeBatchFromSyncstack(state, getters, firebaseBatch, batchMaxCount) {
         // replace arrayUnion and arrayRemove
         var patchData = Object.entries(item)
             .reduce(function (carry, _a) {
-            var key = _a[0], data = _a[1];
-            // replace arrayUnion and arrayRemove
-            carry[key] = findAndReplaceIf(data, function (foundVal) {
-                if (isArrayHelper(foundVal)) {
-                    return foundVal.getFirestoreFieldValue();
-                }
-                if (isIncrementHelper(foundVal)) {
-                    return foundVal.getFirestoreFieldValue();
-                }
-                return foundVal;
-            });
-            return carry;
-        }, {});
+                var key = _a[0], data = _a[1];
+                // replace arrayUnion and arrayRemove
+                carry[key] = findAndReplaceIf(data, function (foundVal) {
+                    if (isArrayHelper(foundVal)) {
+                        return foundVal.getFirestoreFieldValue();
+                    }
+                    if (isIncrementHelper(foundVal)) {
+                        return foundVal.getFirestoreFieldValue();
+                    }
+                    return foundVal;
+                });
+                return carry;
+            }, {});
         // delete id if it's guarded
         if (guard.includes('id'))
             delete item.id;
@@ -2795,7 +2795,7 @@ function getValueFromPayloadPiece(payloadPiece) {
  * @param {*} Firebase The Firebase dependency
  * @returns {AnyObject} the actions object
  */
-function pluginActions (firestoreConfig) {
+function pluginActions(firestoreConfig) {
     var _this = this;
     var Firebase = firestoreConfig.FirebaseDependency, enablePersistence = firestoreConfig.enablePersistence, synchronizeTabs = firestoreConfig.synchronizeTabs;
     return {
@@ -2849,20 +2849,22 @@ function pluginActions (firestoreConfig) {
                 return error('only-in-collection-mode');
             if (!isArray$1(ids) || !ids.length)
                 return {};
-            var idsMap = ids.reduce(function (carry, id) { return __awaiter(_this, void 0, void 0, function () {
-                var idMap;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, dispatch('duplicate', id)];
-                        case 1:
-                            idMap = _a.sent();
-                            return [4 /*yield*/, carry];
-                        case 2:
-                            carry = _a.sent();
-                            return [2 /*return*/, Object.assign(carry, idMap)];
-                    }
+            var idsMap = ids.reduce(function (carry, id) {
+                return __awaiter(_this, void 0, void 0, function () {
+                    var idMap;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, dispatch('duplicate', id)];
+                            case 1:
+                                idMap = _a.sent();
+                                return [4 /*yield*/, carry];
+                            case 2:
+                                carry = _a.sent();
+                                return [2 /*return*/, Object.assign(carry, idMap)];
+                        }
+                    });
                 });
-            }); }, {});
+            }, {});
             return idsMap;
         },
         patchDoc: function (_a, _b) {
@@ -2901,22 +2903,22 @@ function pluginActions (firestoreConfig) {
                 }
                 else {
                     newVal = merge(
-                    // extension to update increment and array helpers
-                    {
-                        extensions: [
-                            function (originVal, newVal) {
-                                if (isArrayHelper(originVal)) {
-                                    originVal.payload = originVal.payload.concat(newVal.payload);
-                                    newVal = originVal;
-                                }
-                                if (isIncrementHelper(originVal)) {
-                                    originVal.payload = originVal.payload + newVal.payload;
-                                    newVal = originVal;
-                                }
-                                return newVal; // always return newVal as fallback!!
-                            },
-                        ],
-                    }, state._sync.syncStack.updates[id], patchData);
+                        // extension to update increment and array helpers
+                        {
+                            extensions: [
+                                function (originVal, newVal) {
+                                    if (isArrayHelper(originVal)) {
+                                        originVal.payload = originVal.payload.concat(newVal.payload);
+                                        newVal = originVal;
+                                    }
+                                    if (isIncrementHelper(originVal)) {
+                                        originVal.payload = originVal.payload + newVal.payload;
+                                        newVal = originVal;
+                                    }
+                                    return newVal; // always return newVal as fallback!!
+                                },
+                            ],
+                        }, state._sync.syncStack.updates[id], patchData);
                 }
                 state._sync.syncStack.updates[id] = newVal;
             });
@@ -2978,16 +2980,16 @@ function pluginActions (firestoreConfig) {
                 getters.dbRef
                     .set(initialDocPrepared)
                     .then(function () {
-                    if (state._conf.logging) {
-                        var message = 'Initial doc succesfully inserted';
-                        console.log("%c [vuex-easy-firestore] " + message + "; for Firestore PATH: " + getters.firestorePathComplete + " [" + state._conf.firestorePath + "]", 'color: SeaGreen');
-                    }
-                    resolve();
-                })
+                        if (state._conf.logging) {
+                            var message = 'Initial doc succesfully inserted';
+                            console.log("%c [vuex-easy-firestore] " + message + "; for Firestore PATH: " + getters.firestorePathComplete + " [" + state._conf.firestorePath + "]", 'color: SeaGreen');
+                        }
+                        resolve();
+                    })
                     .catch(function (error$1) {
-                    error('initial-doc-failed', error$1);
-                    reject(error$1);
-                });
+                        error('initial-doc-failed', error$1);
+                        reject(error$1);
+                    });
             });
         },
         handleSyncStackDebounce: function (_a, payloadToResolve) {
@@ -3029,22 +3031,22 @@ function pluginActions (firestoreConfig) {
                 batch
                     .commit()
                     .then(function (_) {
-                    var remainingSyncStack = Object.keys(state._sync.syncStack.updates).length +
-                        state._sync.syncStack.deletions.length +
-                        state._sync.syncStack.inserts.length +
-                        state._sync.syncStack.propDeletions.length;
-                    if (remainingSyncStack) {
-                        dispatch('batchSync');
-                    }
-                    dispatch('_stopPatching');
-                    return resolve();
-                })
+                        var remainingSyncStack = Object.keys(state._sync.syncStack.updates).length +
+                            state._sync.syncStack.deletions.length +
+                            state._sync.syncStack.inserts.length +
+                            state._sync.syncStack.propDeletions.length;
+                        if (remainingSyncStack) {
+                            dispatch('batchSync');
+                        }
+                        dispatch('_stopPatching');
+                        return resolve();
+                    })
                     .catch(function (error$1) {
-                    state._sync.patching = 'error';
-                    state._sync.syncStack.debounceTimer = null;
-                    error('sync-error', error$1);
-                    return reject(error$1);
-                });
+                        state._sync.patching = 'error';
+                        state._sync.syncStack.debounceTimer = null;
+                        error('sync-error', error$1);
+                        return reject(error$1);
+                    });
             });
         },
         fetch: function (_a, parameters) {
@@ -3145,26 +3147,26 @@ function pluginActions (firestoreConfig) {
                 fRef
                     .get()
                     .then(function (querySnapshot) {
-                    var docs = querySnapshot.docs;
-                    if (docs.length === 0) {
-                        state._sync.fetched[identifier].done = true;
-                        querySnapshot.done = true;
-                        return resolve(querySnapshot);
-                    }
-                    if (docs.length < limit) {
-                        state._sync.fetched[identifier].done = true;
-                    }
-                    state._sync.fetched[identifier].retrievedFetchRefs.push(fRef);
-                    // Get the last visible document
-                    resolve(querySnapshot);
-                    var lastVisible = docs[docs.length - 1];
-                    // set the reference for the next records.
-                    var next = fRef.startAfter(lastVisible);
-                    state._sync.fetched[identifier].nextFetchRef = next;
-                })
+                        var docs = querySnapshot.docs;
+                        if (docs.length === 0) {
+                            state._sync.fetched[identifier].done = true;
+                            querySnapshot.done = true;
+                            return resolve(querySnapshot);
+                        }
+                        if (docs.length < limit) {
+                            state._sync.fetched[identifier].done = true;
+                        }
+                        state._sync.fetched[identifier].retrievedFetchRefs.push(fRef);
+                        // Get the last visible document
+                        resolve(querySnapshot);
+                        var lastVisible = docs[docs.length - 1];
+                        // set the reference for the next records.
+                        var next = fRef.startAfter(lastVisible);
+                        state._sync.fetched[identifier].nextFetchRef = next;
+                    })
                     .catch(function (error$1) {
-                    return reject(error(error$1));
-                });
+                        return reject(error(error$1));
+                    });
             });
         },
         // where: [['archived', '==', true]]
@@ -3209,42 +3211,44 @@ function pluginActions (firestoreConfig) {
                 }
                 return getters.dbRef
                     .get()
-                    .then(function (_doc) { return __awaiter(_this, void 0, void 0, function () {
-                    var message, id, doc;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                if (!!_doc.exists) return [3 /*break*/, 2];
-                                // No initial doc found in docMode
-                                if (state._conf.sync.preventInitialDocInsertion)
-                                    throw 'preventInitialDocInsertion';
-                                if (state._conf.logging) {
-                                    message = 'inserting initial doc';
-                                    console.log("%c [vuex-easy-firestore] " + message + "; for Firestore PATH: " + getters.firestorePathComplete + " [" + state._conf.firestorePath + "]", 'color: MediumSeaGreen');
+                    .then(function (_doc) {
+                        return __awaiter(_this, void 0, void 0, function () {
+                            var message, id, doc;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        if (!!_doc.exists) return [3 /*break*/, 2];
+                                        // No initial doc found in docMode
+                                        if (state._conf.sync.preventInitialDocInsertion)
+                                            throw 'preventInitialDocInsertion';
+                                        if (state._conf.logging) {
+                                            message = 'inserting initial doc';
+                                            console.log("%c [vuex-easy-firestore] " + message + "; for Firestore PATH: " + getters.firestorePathComplete + " [" + state._conf.firestorePath + "]", 'color: MediumSeaGreen');
+                                        }
+                                        return [4 /*yield*/, dispatch('insertInitialDoc')
+                                            // an error in await here is (somehow) caught in the catch down below
+                                        ];
+                                    case 1:
+                                        _a.sent();
+                                        // an error in await here is (somehow) caught in the catch down below
+                                        return [2 /*return*/, _doc];
+                                    case 2:
+                                        id = getters.docModeId;
+                                        doc = getters.cleanUpRetrievedDoc(_doc.data(), id);
+                                        dispatch('applyHooksAndUpdateState', {
+                                            change: 'modified',
+                                            id: id,
+                                            doc: doc,
+                                        });
+                                        return [2 /*return*/, doc];
                                 }
-                                return [4 /*yield*/, dispatch('insertInitialDoc')
-                                    // an error in await here is (somehow) caught in the catch down below
-                                ];
-                            case 1:
-                                _a.sent();
-                                // an error in await here is (somehow) caught in the catch down below
-                                return [2 /*return*/, _doc];
-                            case 2:
-                                id = getters.docModeId;
-                                doc = getters.cleanUpRetrievedDoc(_doc.data(), id);
-                                dispatch('applyHooksAndUpdateState', {
-                                    change: 'modified',
-                                    id: id,
-                                    doc: doc,
-                                });
-                                return [2 /*return*/, doc];
-                        }
-                    });
-                }); })
+                            });
+                        });
+                    })
                     .catch(function (error$1) {
-                    error(error$1);
-                    throw error$1;
-                });
+                        error(error$1);
+                        throw error$1;
+                    });
             }
             // 'collection' mode:
             return dispatch('fetch', parameters).then(function (querySnapshot) {
@@ -3293,8 +3297,8 @@ function pluginActions (firestoreConfig) {
             });
         },
         applyHooksAndUpdateState: function (
-        // this is only on server retrievals
-        _a, _b) {
+            // this is only on server retrievals
+            _a, _b) {
             var getters = _a.getters, state = _a.state, commit = _a.commit, dispatch = _a.dispatch;
             var change = _b.change, id = _b.id, _c = _b.doc, doc = _c === void 0 ? {} : _c;
             var store = this;
@@ -3327,8 +3331,8 @@ function pluginActions (firestoreConfig) {
             var defaultValues = getters.defaultValues;
             var searchTarget = getters.collectionMode ? getters.storeRef[doc.id] : getters.storeRef;
             var compareInfo = compareObjectProps(flatten(doc), // presentIn 0
-            flatten(defaultValues), // presentIn 1
-            flatten(searchTarget) // presentIn 2
+                flatten(defaultValues), // presentIn 1
+                flatten(searchTarget) // presentIn 2
             );
             Object.keys(compareInfo.presentIn).forEach(function (prop) {
                 // don't worry about props not in fillables
@@ -3355,11 +3359,13 @@ function pluginActions (firestoreConfig) {
         openDBChannel: function (_a, parameters) {
             var _this = this;
             var getters = _a.getters, state = _a.state, commit = _a.commit, dispatch = _a.dispatch;
-            if (parameters === void 0) { parameters = {
-                clauses: {},
-                pathVariables: {},
-                includeMetadataChanges: true,
-            }; }
+            if (parameters === void 0) {
+                parameters = {
+                    clauses: {},
+                    pathVariables: {},
+                    includeMetadataChanges: true,
+                };
+            }
             if (!isPlainObject(parameters))
                 parameters = {};
             /* COMPATIBILITY START
@@ -3501,7 +3507,8 @@ function pluginActions (firestoreConfig) {
             var updateAllOpenTabsWithLocalPersistence = enablePersistence && synchronizeTabs;
             var onSnapshotListener = !getters.collectionMode
                 ? // 'doc' mode
-                    function (docSnapshot) { return __awaiter(_this, void 0, void 0, function () {
+                function (docSnapshot) {
+                    return __awaiter(_this, void 0, void 0, function () {
                         var isLocalUpdate, message, error_1;
                         return __generator(this, function (_a) {
                             switch (_a.label) {
@@ -3559,9 +3566,11 @@ function pluginActions (firestoreConfig) {
                                 case 8: return [2 /*return*/];
                             }
                         });
-                    }); }
+                    });
+                }
                 : // 'collection' mode
-                    function (querySnapshot) { return __awaiter(_this, void 0, void 0, function () {
+                function (querySnapshot) {
+                    return __awaiter(_this, void 0, void 0, function () {
                         var isLocalUpdate;
                         return __generator(this, function (_a) {
                             isLocalUpdate = querySnapshot.metadata.hasPendingWrites;
@@ -3576,7 +3585,8 @@ function pluginActions (firestoreConfig) {
                             }
                             return [2 /*return*/];
                         });
-                    }); };
+                    });
+                };
             var unsubscribe = dbRef.onSnapshot({ includeMetadataChanges: includeMetadataChanges }, onSnapshotListener, streamingStop);
             state._sync.unsubscribe[identifier] = unsubscribe;
             return initialPromise;
@@ -3840,7 +3850,7 @@ function pluginActions (firestoreConfig) {
  * @param {*} Firebase The Firebase dependency
  * @returns {AnyObject} the getters object
  */
-function pluginGetters (Firebase) {
+function pluginGetters(Firebase) {
     return {
         firestorePathComplete: function (state, getters) {
             var path = state._conf.firestorePath;
@@ -3894,119 +3904,131 @@ function pluginGetters (Firebase) {
             return merge(state._conf.sync.defaultValues, state._conf.serverChange.defaultValues // depreciated
             );
         },
-        cleanUpRetrievedDoc: function (state, getters, rootState, rootGetters) { return function (doc, id) {
-            var defaultValues = merge(getters.defaultValues, state._conf.serverChange.convertTimestamps);
-            var cleanDoc = setDefaultValues(doc, defaultValues);
-            cleanDoc.id = id;
-            return cleanDoc;
-        }; },
-        prepareForPatch: function (state, getters, rootState, rootGetters) { return function (ids, doc) {
-            if (ids === void 0) { ids = []; }
-            if (doc === void 0) { doc = {}; }
-            // get relevant data from the storeRef
-            var collectionMode = getters.collectionMode;
-            if (!collectionMode)
-                ids.push(getters.docModeId);
-            // returns {object} -> {id: data}
-            return ids.reduce(function (carry, id) {
+        cleanUpRetrievedDoc: function (state, getters, rootState, rootGetters) {
+            return function (doc, id) {
+                var defaultValues = merge(getters.defaultValues, state._conf.serverChange.convertTimestamps);
+                var cleanDoc = setDefaultValues(doc, defaultValues);
+                cleanDoc.id = id;
+                return cleanDoc;
+            };
+        },
+        prepareForPatch: function (state, getters, rootState, rootGetters) {
+            return function (ids, doc) {
+                if (ids === void 0) { ids = []; }
+                if (doc === void 0) { doc = {}; }
+                // get relevant data from the storeRef
+                var collectionMode = getters.collectionMode;
+                if (!collectionMode)
+                    ids.push(getters.docModeId);
+                // returns {object} -> {id: data}
+                return ids.reduce(function (carry, id) {
+                    var patchData = {};
+                    // retrieve full object in case there's an empty doc passed
+                    if (!Object.keys(doc).length) {
+                        patchData = collectionMode ? getters.storeRef[id] : getters.storeRef;
+                    }
+                    else {
+                        patchData = doc;
+                    }
+                    // set default fields
+                    patchData.updated_at = new Date();
+                    patchData.updated_by = state._sync.userId;
+                    // clean up item
+                    var cleanedPatchData = filter(patchData, getters.fillables, getters.guard);
+                    var itemToUpdate = flatten(cleanedPatchData);
+                    // add id (required to get ref later at apiHelpers.ts)
+                    // @ts-ignore
+                    itemToUpdate.id = id;
+                    carry[id] = itemToUpdate;
+                    return carry;
+                }, {});
+            };
+        },
+        prepareForPropDeletion: function (state, getters, rootState, rootGetters) {
+            return function (path) {
+                var _a;
+                if (path === void 0) { path = ''; }
+                var collectionMode = getters.collectionMode;
                 var patchData = {};
-                // retrieve full object in case there's an empty doc passed
-                if (!Object.keys(doc).length) {
-                    patchData = collectionMode ? getters.storeRef[id] : getters.storeRef;
-                }
-                else {
-                    patchData = doc;
-                }
                 // set default fields
                 patchData.updated_at = new Date();
                 patchData.updated_by = state._sync.userId;
+                // add fillable and guard defaults
                 // clean up item
                 var cleanedPatchData = filter(patchData, getters.fillables, getters.guard);
-                var itemToUpdate = flatten(cleanedPatchData);
                 // add id (required to get ref later at apiHelpers.ts)
-                // @ts-ignore
-                itemToUpdate.id = id;
-                carry[id] = itemToUpdate;
-                return carry;
-            }, {});
-        }; },
-        prepareForPropDeletion: function (state, getters, rootState, rootGetters) { return function (path) {
-            var _a;
-            if (path === void 0) { path = ''; }
-            var collectionMode = getters.collectionMode;
-            var patchData = {};
-            // set default fields
-            patchData.updated_at = new Date();
-            patchData.updated_by = state._sync.userId;
-            // add fillable and guard defaults
-            // clean up item
-            var cleanedPatchData = filter(patchData, getters.fillables, getters.guard);
-            // add id (required to get ref later at apiHelpers.ts)
-            var id, cleanedPath;
-            if (collectionMode) {
-                id = path.substring(0, path.indexOf('.'));
-                cleanedPath = path.substring(path.indexOf('.') + 1);
-            }
-            else {
-                id = getters.docModeId;
-                cleanedPath = path;
-            }
-            cleanedPatchData[cleanedPath] = Firebase.firestore.FieldValue.delete();
-            cleanedPatchData.id = id;
-            return _a = {}, _a[id] = cleanedPatchData, _a;
-        }; },
-        prepareForInsert: function (state, getters, rootState, rootGetters) { return function (items) {
-            if (items === void 0) { items = []; }
-            // add fillable and guard defaults
-            return items.reduce(function (carry, item) {
+                var id, cleanedPath;
+                if (collectionMode) {
+                    id = path.substring(0, path.indexOf('.'));
+                    cleanedPath = path.substring(path.indexOf('.') + 1);
+                }
+                else {
+                    id = getters.docModeId;
+                    cleanedPath = path;
+                }
+                cleanedPatchData[cleanedPath] = Firebase.firestore.FieldValue.delete();
+                cleanedPatchData.id = id;
+                return _a = {}, _a[id] = cleanedPatchData, _a;
+            };
+        },
+        prepareForInsert: function (state, getters, rootState, rootGetters) {
+            return function (items) {
+                if (items === void 0) { items = []; }
+                // add fillable and guard defaults
+                return items.reduce(function (carry, item) {
+                    // set default fields
+                    item.created_at = new Date();
+                    item.created_by = state._sync.userId;
+                    // clean up item
+                    item = filter(item, getters.fillables, getters.guard);
+                    carry.push(item);
+                    return carry;
+                }, []);
+            };
+        },
+        prepareInitialDocForInsert: function (state, getters, rootState, rootGetters) {
+            return function (doc) {
+                // add fillable and guard defaults
                 // set default fields
-                item.created_at = new Date();
-                item.created_by = state._sync.userId;
+                doc.created_at = new Date();
+                doc.created_by = state._sync.userId;
+                doc.id = getters.docModeId;
                 // clean up item
-                item = filter(item, getters.fillables, getters.guard);
-                carry.push(item);
-                return carry;
-            }, []);
-        }; },
-        prepareInitialDocForInsert: function (state, getters, rootState, rootGetters) { return function (doc) {
-            // add fillable and guard defaults
-            // set default fields
-            doc.created_at = new Date();
-            doc.created_by = state._sync.userId;
-            doc.id = getters.docModeId;
-            // clean up item
-            doc = filter(doc, getters.fillables, getters.guard);
-            return doc;
-        }; },
-        getWhereArrays: function (state, getters) { return function (whereArrays) {
-            if (!isArray$1(whereArrays))
-                whereArrays = state._conf.sync.where;
-            return whereArrays.map(function (whereClause) {
-                return whereClause.map(function (param) {
-                    if (!isString(param))
-                        return param;
-                    var cleanedParam = param;
-                    getPathVarMatches(param).forEach(function (key) {
-                        var keyRegEx = new RegExp("{" + key + "}", 'g');
-                        if (key === 'userId') {
-                            cleanedParam = cleanedParam.replace(keyRegEx, state._sync.userId);
-                            return;
-                        }
-                        if (!Object.keys(state._sync.pathVariables).includes(key)) {
-                            return error('missing-path-variables');
-                        }
-                        var varVal = state._sync.pathVariables[key];
-                        // if path is only a param we need to just assign to avoid stringification
-                        if (param === "{" + key + "}") {
-                            cleanedParam = varVal;
-                            return;
-                        }
-                        cleanedParam = cleanedParam.replace(keyRegEx, varVal);
+                doc = filter(doc, getters.fillables, getters.guard);
+                return doc;
+            };
+        },
+        getWhereArrays: function (state, getters) {
+            return function (whereArrays) {
+                if (!isArray$1(whereArrays))
+                    whereArrays = state._conf.sync.where;
+                return whereArrays.map(function (whereClause) {
+                    return whereClause.map(function (param) {
+                        if (!isString(param))
+                            return param;
+                        var cleanedParam = param;
+                        getPathVarMatches(param).forEach(function (key) {
+                            var keyRegEx = new RegExp("{" + key + "}", 'g');
+                            if (key === 'userId') {
+                                cleanedParam = cleanedParam.replace(keyRegEx, state._sync.userId);
+                                return;
+                            }
+                            if (!Object.keys(state._sync.pathVariables).includes(key)) {
+                                return error('missing-path-variables');
+                            }
+                            var varVal = state._sync.pathVariables[key];
+                            // if path is only a param we need to just assign to avoid stringification
+                            if (param === "{" + key + "}") {
+                                cleanedParam = varVal;
+                                return;
+                            }
+                            cleanedParam = cleanedParam.replace(keyRegEx, varVal);
+                        });
+                        return cleanedParam;
                     });
-                    return cleanedParam;
                 });
-            });
-        }; },
+            };
+        },
     };
 }
 
@@ -4017,7 +4039,7 @@ function pluginGetters (Firebase) {
  * @param {IEasyFirestoreModule} config
  * @returns {boolean} true if no errors, false if errors
  */
-function errorCheck (config) {
+function errorCheck(config) {
     var errors = [];
     var reqProps = ['firestorePath', 'moduleName'];
     reqProps.forEach(function (prop) {
@@ -4121,7 +4143,7 @@ function errorCheck (config) {
  * @param {*} FirebaseDependency The Firebase dependency (non-instanciated), defaults to the Firebase peer dependency if left blank.
  * @returns {IStore} the module ready to be included in your vuex store
  */
-function iniModule (userConfig, firestoreConfig) {
+function iniModule(userConfig, firestoreConfig) {
     var FirebaseDependency = firestoreConfig.FirebaseDependency;
     // prepare state._conf
     var conf = copy(merge({ state: {}, mutations: {}, actions: {}, getters: {} }, defaultConfig, userConfig));

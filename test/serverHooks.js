@@ -1,6 +1,6 @@
 import test from 'ava'
 import wait from './helpers/wait'
-import * as Firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { store } from './helpers/index.cjs.js'
 

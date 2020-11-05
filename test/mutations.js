@@ -1,6 +1,6 @@
 import test from 'ava'
 import { store } from './helpers/index.cjs.js'
-import * as Firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const char = store.state.mainCharacter

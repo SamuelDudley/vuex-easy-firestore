@@ -1,22 +1,22 @@
 import { isAnyObject, isPlainObject, isArray } from 'is-what'
-import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 import isEqual from 'lodash-es/isEqual'
 
 let Firebase = firebase
 
-export function setFirebaseDependency (firebaseDependency) {
+export function setFirebaseDependency(firebaseDependency) {
   Firebase = firebaseDependency
 }
 
 export class ArrayUnion {
   isArrayHelper: boolean
   payload: any
-  constructor (...payload: any) {
+  constructor(...payload: any) {
     this.isArrayHelper = true
     this.payload = payload
   }
-  executeOn (array: any[]) {
+  executeOn(array: any[]) {
     this.payload.forEach(item => {
       const index =
         isAnyObject(item)
@@ -28,7 +28,7 @@ export class ArrayUnion {
     })
     return array
   }
-  getFirestoreFieldValue () {
+  getFirestoreFieldValue() {
     return Firebase.firestore.FieldValue.arrayUnion(...this.payload)
   }
 }
@@ -36,11 +36,11 @@ export class ArrayUnion {
 export class ArrayRemove {
   isArrayHelper: boolean
   payload: any
-  constructor (...payload: any) {
+  constructor(...payload: any) {
     this.isArrayHelper = true
     this.payload = payload
   }
-  executeOn (array: any[]) {
+  executeOn(array: any[]) {
     this.payload.forEach(item => {
       const index =
         isAnyObject(item)
@@ -52,20 +52,20 @@ export class ArrayRemove {
     })
     return array
   }
-  getFirestoreFieldValue () {
+  getFirestoreFieldValue() {
     return Firebase.firestore.FieldValue.arrayRemove(...this.payload)
   }
 }
 
-export function arrayUnion (...payload) {
+export function arrayUnion(...payload) {
   return new ArrayUnion(...payload)
 }
 
-export function arrayRemove (...payload) {
+export function arrayRemove(...payload) {
   return new ArrayRemove(...payload)
 }
 
-export function isArrayHelper (value) {
+export function isArrayHelper(value) {
   // this is bugged in vuex actions, I DONT KNOW WHY
   // return (
   //   value instanceof ArrayUnion ||
